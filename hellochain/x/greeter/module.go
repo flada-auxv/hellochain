@@ -1,27 +1,29 @@
 package greeter
 
 import (
+	"github.com/spf13/cobra"
+
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	"github.com/cosmos/cosmos-sdk/x/gov/client/cli"
 	"github.com/cosmos/sdk-tutorials/hellochain/starter"
+	"github.com/cosmos/sdk-tutorials/hellochain/x/greeter/client/cli"
 	gtypes "github.com/cosmos/sdk-tutorials/hellochain/x/greeter/internal/types"
-	"github.com/spf13/cobra"
 )
 
-// AppModuleBasic struct
+// AppModuleBasic is the minimal struct for a module
 type AppModuleBasic struct {
 	starter.BlankModuleBasic
 }
 
-// AppModule struct
+// AppModule contains the full module
 type AppModule struct {
 	starter.BlankModule
 	keeper     Keeper
 	ModuleName string
 }
 
+// type check to ensure the interface is properly implemented
 var (
 	_ module.AppModule      = AppModule{}
 	_ module.AppModuleBasic = AppModuleBasic{}
